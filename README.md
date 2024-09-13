@@ -16,7 +16,7 @@ iii) needs the ground truth speed of sound map, already used in 1) as additional
 
 How python codes work
 
-- The python codes in this repository include: i) a vesselness filter developed by Frangi et al. (https://doi.org/10.1007/BFb0056195), ii)perlin noise generation and iii) a vessel tree generator developed by Iyer et al. (https://doi.org/10.1038/s41598-023-44633-2) with an voxelizer.
+- The python codes in this repository include: i) a vesselness filter developed by Frangi et al. (https://doi.org/10.1007/BFb0056195), ii)perlin noise generation and iii) a vessel tree generator developed by Iyer et al. (https://doi.org/10.1038/s41598-023-44633-2) with a voxelizer.
 - i) needs an image as input, in this work it is an MRI
 - ii) needs as an input a digital phantom in which the grey and white matter should grow and the repository (https://github.com/Maharshi-Pandya/Perlin-Noise-Implementation.git) needs to be copied
 - iii) for using this code the repository (https://github.com/kritiyer/vessel_tree_generator.git) needs to be copied and their dependencies fulfilled
