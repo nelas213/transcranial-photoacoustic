@@ -8,6 +8,9 @@ load('C:\Users\tpas\Desktop\Dateidatei\Simple Segmentation\outputs simpa\final_t
 % help file
 scale = 1;
 
+input_file=input_file
+output_file=output_file
+
 % create the computational grid                  % size of the PML in grid points
 Nx = 300;
 Ny = 300;
@@ -19,7 +22,7 @@ kgrid = kWaveGrid(Nx, dx, Ny, dy, Nz, dz);
 PML_size = getOptimalPMLSize([Nx,Ny,Nz]); 
 
 % define the properties of the propagation medium
-load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/layer_sos_skull.mat')
+load('input_file/layer_sos_skull.mat')
 medium.sound_speed = sos_layer;      % [m/s]
 medium.density = 1000*ones(Nx, Ny, Nz);
 medium.alpha_coeff = 0.01;
@@ -62,13 +65,13 @@ else
 input_args = {'PMLSize', PML_size, 'PMLInside', false, ...
     'PlotPML', false, 'Smooth', false, 'DataCast', 'single'};
 
-% %load input data as sensor data
-%load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/time series data/larger p0/depth_150_larger_p0_just_blood.mat',"sensor_data")
-load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/time series data/larger p0/depth_400_larger_p0_just_blood',"sensor_data")
+% %load input data as sensor data p0 only vessel
+%load('input_file/depth_150_larger_p0_just_blood.mat',"sensor_data")
+load('input_file/depth_400_larger_p0_just_blood',"sensor_data")
 
 % load data for the whole p0
-% load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/time series data/larger p0/depth_150_larger_p0.mat',"sensor_data")
-% %load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/time series data/larger p0/depth_400_larger_p0.mat',"sensor_data")
+% load('input_file/depth_150_larger_p0.mat',"sensor_data")
+% %load('input_file/depth_400_larger_p0.mat',"sensor_data")
 
 % assign the time reversal data
 sensor.time_reversal_boundary_data = sensor_data;
@@ -112,9 +115,9 @@ colormap(getColorMap);
 %   SAVE
 % =====================================================
 % save for p0 just blood
-%save('C:/Users/tpas/Desktop/Dateidatei/final work nelas/reconstruction/final/layer_sos_depth_150_larger_p0_just_blood.mat',"p0_recon")
-save('C:/Users/tpas/Desktop/Dateidatei/final work nelas/reconstruction/final/layer_sos_depth_400_larger_p0_just_blood.mat',"p0_recon")
+%save('output_file/layer_sos_depth_150_larger_p0_just_blood.mat',"p0_recon")
+save('output_file/layer_sos_depth_400_larger_p0_just_blood.mat',"p0_recon")
 
 % % save for the whole p0
-% save('C:/Users/tpas/Desktop/Dateidatei/final work nelas/reconstruction/final/layer_sos_depth_150_larger_p0.mat',"p0_recon")
-% %save('C:/Users/tpas/Desktop/Dateidatei/final work nelas/reconstruction/final/time_layer_sos_depth_400_larger_p0.mat',"p0_recon")
+% save('output_file/layer_sos_depth_150_larger_p0.mat',"p0_recon")
+% %save('output_file/time_layer_sos_depth_400_larger_p0.mat',"p0_recon")

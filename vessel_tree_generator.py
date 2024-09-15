@@ -10,7 +10,8 @@ import json
 import copy
 import argparse
 
-save_path='C:/Users/tpas/Desktop/Dateidatei/Simple Segmentation/vessel tree'
+
+save_path='save_path'
 
 # general: required arguments
 parser = argparse.ArgumentParser('3D vessel tree generator')

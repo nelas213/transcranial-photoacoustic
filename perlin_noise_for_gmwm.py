@@ -14,22 +14,23 @@ to increase details, increase octaves.
 
 mask cuts, where there isnt supposed to be any matter, slope is the "strength" of the cut
 """
+input_file=input_file
+output_file=output_file
 
 start = time.time()
 
 noise = PerlinNoise(octaves=2)
 
 
-# head,_ = nrrd.read("C:/Users/carlo/OneDrive/Kopf Segmentiererei/new segmentation/neues Phantom/mini_phantom.nrrd")
-# head = head[:,:,::-1]
 
 
-head,_ = nrrd.read("C:/Users/tpas/Desktop/Dateidatei/Simple Segmentation/vessel tree/larger_mini_with_vessel.nrrd")
+head,_ = nrrd.read("input_file/larger_mini_with_vessel.nrrd") #here is a phantom without grey and white matter needed
 
 
 shape = head.shape[0]
 xpix,ypix,zpix = head.shape
 
+#2 is defined as CSF in phantom
 I = 0
 while 2 not in head[:,:,I]:
     I+=1
@@ -78,7 +79,7 @@ print(end-start, "s")
 Phantom = np.where(pic==1,6,head)
 Phantom = np.where(pic==2,7,Phantom)
 
-nrrd.write("C:/Users/tpas/Desktop/Dateidatei/Simple Segmentation/vessel tree/larger_mini_phantom_grown.nrrd",Phantom)
+nrrd.write("output_file/larger_mini_all.nrrd",Phantom)
 #%%
 for i in range(shape):
     #plt.figure(figsize=(15,15))

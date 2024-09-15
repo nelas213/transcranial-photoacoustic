@@ -4,8 +4,11 @@ import os
 import nrrd
 import matplotlib.pyplot as plt
 
-#path = "C:/Users/carlo/Desktop/Dateidatei/Photoacoustics/Vessel_growing/Save/test/labels/test/"    
-path = 'C:/Users/tpas/Desktop/Dateidatei/Simple Segmentation/vessel tree/test/labels/test/'
+input_file=input_file
+output_file=output_file
+
+
+path = 'path'#path to generated vessel from vessel_tree_generator
 
 TEST = [np.load(path+element) for element in os.listdir(path)]
 
@@ -13,8 +16,8 @@ testtree=TEST[0]
 tree_two = TEST[1]
 #%%
 
-# head,_ = nrrd.read("C:/Users/tpas/Desktop/Dateidatei/Simple Segmentation/mini_phantom.nrrd")
-head,_ = nrrd.read("C:/Users/tpas/Desktop/Dateidatei/Simple Segmentation/larger_mini_csf+skull.nrrd")
+
+head,_ = nrrd.read("input_file/larger_mini_csf+skull.nrrd")
 head = head[:,:,::-1]
 head = np.where(head==1,2,head)
 
@@ -99,5 +102,4 @@ for i in range(head.shape[0]):
     #plt.figure(figsize=(15,15))
     plt.imshow(final_head[:,i,:]), plt.show()
 #%%
-#nrrd.write("C:/Users/carlo/Desktop/Dateidatei/Photoacoustics/Vessel_growing/vessel.nrrd",grid)
-nrrd.write("C:/Users/tpas/Desktop/Dateidatei/Simple Segmentation/vessel tree/larger_mini_with_vessel.nrrd",final_head)
+nrrd.write("output_file/larger_mini_with_vessel.nrrd",final_head)

@@ -5,8 +5,12 @@ import nrrd
 import matplotlib.pyplot as plt
 from skimage.filters import frangi
 from scipy.ndimage import gaussian_filter
+
+input_file=input_file
+output_file=output_file
+
 #%%
-head = nrrd.read("C:/Users/carlo/Desktop/Dateidatei/Photoacoustics/7T MRT/7T_MRT.nrrd")[0].astype(np.float64)
+head = nrrd.read("input_file/7T_MRT.nrrd")[0].astype(np.float64) #load MRI
 
 #vessel_filtered = frangi(head)
 
@@ -66,4 +70,4 @@ plt.imshow(np.max(vessel_filt,axis=1))
 
 #%%
 #newnewhead = newhead[:150,:150,110:]
-nrrd.write("C:/Users/carlo/Desktop/Dateidatei/Photoacoustics/Slicing/output/vessels.nrrd",vessel_filt)
+nrrd.write("output_file/vessels.nrrd",vessel_filt)

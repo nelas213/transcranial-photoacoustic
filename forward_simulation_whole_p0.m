@@ -6,6 +6,9 @@
 % help file
 scale = 1;
 
+input_file=input_file
+output_file=output_file
+
 % create the computational grid                  % size of the PML in grid points
 Nx = 300;
 Ny = 300;
@@ -18,29 +21,23 @@ PML_size = getOptimalPMLSize([Nx,Ny,Nz]);
 
 % define the properties of the propagation medium
 %sos
-load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/medium/sos_perfect_depth_150.mat')
-%load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/medium/sos_perfect_depth_400.mat')
+load('input_file/sos_perfect_depth_150.mat')
 medium.sound_speed = sos;
 % density
-load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/medium/density_perfect_depth_150.mat')
-%load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/medium/density_perfect_depth_400.mat')
+load('input_file/density_perfect_depth_150.mat')
 medium.density = density;
 %attenuation
-load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/medium/alpha_0_perfect_depth_150.mat')
-%load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/medium/alpha_0_perfect_depth_400.mat')
+load('C:input_file/alpha_0_perfect_depth_150.mat')
 medium.alpha_coeff = alpha_0;
 
 medium.alpha_power = 1.1;
 medium.alpha_mode = 'no_dispersion';
 
 
-% assign to the source structure geringe tiefe
-load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/mat file p0/p0_150.mat')
+% assign to the source structure shallow
+load('input_file/p0_150.mat')
 source.p0 = p0_150_inPa;
 
-% assign to the source structure hohe tiefe
-%load('C:/Users/tpas/Desktop/Dateidatei/mat file p0/p0_400.mat')
-%source.p0 = p0_400_inPa;
 
 
 % define a binary planar sensor
@@ -78,7 +75,7 @@ sensor_data = gather(sensor_data);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %          save 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-save('C:/Users/tpas/Desktop/Dateidatei/final work nelas/time series data/larger p0/depth_150_larger_p0.mat',"sensor_data")
+save('output_file/depth_150_larger_p0.mat',"sensor_data")
 
 
 clear all
@@ -95,6 +92,9 @@ clear all
 % help file
 scale = 1;
 
+input_file=input_file
+output_file=output_file
+
 % create the computational grid                  % size of the PML in grid points
 Nx = 300;
 Ny = 300;
@@ -107,29 +107,22 @@ PML_size = getOptimalPMLSize([Nx,Ny,Nz]);
 
 % define the properties of the propagation medium
 %sos
-%load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/medium/sos_perfect_depth_150.mat')
-load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/medium/sos_perfect_depth_400.mat')
+load('input_file/sos_perfect_depth_400.mat')
 medium.sound_speed = sos_tief;
 % density
-%load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/medium/density_perfect_depth_150.mat')
-load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/medium/density_perfect_depth_400.mat')
+load('input_file/density_perfect_depth_400.mat')
 medium.density = density_tief;
 %attenuation
-%load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/medium/alpha_0_perfect_depth_150.mat')
-load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/medium/alpha_0_perfect_depth_400.mat')
+load('input_file/alpha_0_perfect_depth_400.mat')
 medium.alpha_coeff = alpha_0_tief;
 
 medium.alpha_power = 1.1;
 medium.alpha_mode = 'no_dispersion';
 
 
-% assign to the source structure geringe tiefe
-load('C:/Users/tpas/Desktop/Dateidatei/final work nelas/mat file p0/p0_400.mat')
+% assign to the source structure higher depths
+load('input_file/p0_400.mat')
 source.p0 = p0_400_inPa;
-
-% assign to the source structure hohe tiefe
-%load('C:/Users/tpas/Desktop/Dateidatei/mat file p0/p0_400.mat')
-%source.p0 = p0_400_inPa;
 
  
 % define a binary planar sensor
@@ -162,5 +155,5 @@ input_args = {'PMLSize', PML_size, 'PMLInside', false, ...
 sensor_data = kspaceFirstOrder3D(kgrid, medium, source, sensor, input_args{:});
 sensor_data = gather(sensor_data);
 % 
-save('C:/Users/tpas/Desktop/Dateidatei/final work nelas/time series data/larger p0/depth_400_larger_p0.mat',"sensor_data")
+save('output_file/depth_400_larger_p0.mat',"sensor_data")
 
