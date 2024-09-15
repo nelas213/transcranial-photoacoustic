@@ -6,11 +6,11 @@ How Matlab codes work
 The difference is the used initial pressure distribution. In both simulations the inputs are: i) initial pressure distribution, ii) medium speed of sound map, iii) medium density map, iv) medium attenuation coefficient map.
 
 
-2) For the reconstruction of the time series data from 1) are different assumptions for the speed of sound in the time reversal method available: i) constant speed of sound (reconstruction_constant_sos.m), ii) an extra layer for the skull and the rest constant (reconstruction_layer_sos.m), iii) ground truth speed of sound map (reconstruction_perfect_sos.m). 
+2) For the reconstruction of the time series data from 1) different assumptions for the speed of sound in the time reversal method are available: i) constant speed of sound (reconstruction_constant_sos.m), ii) an extra layer for the skull and the rest constant (reconstruction_layer_sos.m), iii) ground truth speed of sound map (reconstruction_perfect_sos.m). 
 
 For all the reconstructions the input are the time series data from 1).
  
-ii) needs also the speed of sound map with a layer for the skull as additional input. 
+ii) also needs the speed of sound map with a layer for the skull as additional input. 
 
 iii) needs the ground truth speed of sound map, already used in 1) as additional input. 
 
@@ -20,5 +20,5 @@ How python codes work
 - i) needs an image as input, in this work it is an MRI
 - ii) needs as an input a digital phantom in which the grey and white matter should grow and the repository (https://github.com/Maharshi-Pandya/Perlin-Noise-Implementation.git) needs to be copied
 - iii) for using this code the repository (https://github.com/kritiyer/vessel_tree_generator.git) needs to be copied and their dependencies fulfilled
-- Also are needed for the codes: matplotlib.pyplot, numpy, random, time, nrrd, scipy.ndimage, os, skimage.filters.
+- Additionally, it is required: matplotlib.pyplot, numpy, random, time, nrrd, scipy.ndimage, os, skimage.filters.
 
